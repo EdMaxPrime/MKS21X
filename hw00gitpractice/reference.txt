@@ -1,0 +1,7 @@
+git config --global user.name ""
+git config --global user.email <email>
+git clone <ssh>
+git pull
+git add <file>
+git commit -m ""
+git push

@@ -21,3 +21,12 @@ git commit -m ""
     Finalizes changes. This is a version you can revisit later. Leave message empty to open core.editor to enter it.
 git push
     Uploads your local changes to the online repository.
+
+# Procedure for Working on a Repository #
+  1. Either
+     * clone the repository
+     * pull changes to local copy
+  2. Make changes
+  3. Add them to the staging area
+  4. Commit your changes
+  5. Push your changes

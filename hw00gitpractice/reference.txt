@@ -1,7 +1,15 @@
+# General Commands #
 git config --global user.name ""
+    Your name as you want it to appear under the author for changes
 git config --global user.email <email>
+    The email to your account
 git clone <ssh>
+    Get the ssh address from the repository online, and put it as the parameter
 git pull
+    Pulls changes from the online copy to your local one
 git add <file>
+    Add a file for tracking. Must be a file, can't be a directory.
 git commit -m ""
+    Finalizes changes. This is a version you can revisit later. Leave message empty to open core.editor to enter it.
 git push
+    Uploads your local changes to the online repository.

@@ -14,11 +14,24 @@ public class CirculatingBook extends LibraryBook {
 
     public void setDueDate(String d) {dueDate = d;}
 
-    public void checkout(String patron, String due) {}
+    public void checkout(String patron, String due) {
+	currentHolder = patron;
+	dueDate = due;
+    }
 
-    public void returned() {}
+    public void returned() {
+	currentHolder = null;
+	dueDate = null;
+    }
 
-    public String circulationStatus() {return null;}
+    public String circulationStatus() {
+	if(currentHolder == null || dueDate == null) {
+	    return ("Book available on shelves");
+	}
+	return ("Held by " + currentHolder + " until " + dueDate);
+    }
 
-    public String toString() {return super.toString();}
+    public String toString() {
+	return super.toString() + ", holder: " + currentHolder + ", due: " + dueDate;
+    }
 }

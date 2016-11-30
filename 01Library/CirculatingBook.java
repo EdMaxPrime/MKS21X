@@ -6,6 +6,14 @@ public class CirculatingBook extends LibraryBook {
 	super(auth, t, _isbn, call);
     }
 
+    public String getCurrentHolder() {return currentHolder;}
+
+    public String getDueDate() {return dueDate;}
+
+    public void setCurrentHolder(String h) {currentHolder = h;}
+
+    public void setDueDate(String d) {dueDate = d;}
+
     public void checkout(String patron, String due) {}
 
     public void returned() {}

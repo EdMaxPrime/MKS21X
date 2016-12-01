@@ -21,4 +21,8 @@ public class ReferenceBook extends LibraryBook {
     public String toString() {
 	return super.toString() + ", " + collection + " collection";
     }
+
+    public String getCollection() {return collection;}
+
+    public void setCollection(String c) {collection = c;}
 }

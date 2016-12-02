@@ -1,4 +1,6 @@
-public class SuperArray {
+import java.util.*;
+
+public class SuperArray implements Iterable<String> {
     private String[] data;
     private int size;
 
@@ -170,6 +172,10 @@ public class SuperArray {
             trimmed[i] = data[i];
         }
         data = trimmed;
+    }
+
+    public Iterator<String> iterator() {
+	return new SuperArrayIterator(this);
     }
 
     public static String join(String[] array) {

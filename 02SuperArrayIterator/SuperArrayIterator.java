@@ -15,7 +15,8 @@ public class SuperArrayIterator implements Iterator<String> {
 
     public String next() throws NoSuchElementException {
 	if(current < sa.getSize()) {
-	    return sa.get(current);
+	    current++;
+	    return sa.get(current - 1);
 	}
 	throw new NoSuchElementException("Iterator is done.");
     }

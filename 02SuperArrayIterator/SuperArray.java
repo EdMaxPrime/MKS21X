@@ -38,6 +38,8 @@ public class SuperArray implements Iterable<String> {
 
     public int getSize() {return size;}
 
+    public int size() {return getSize();}
+
     public String toString() {
         if(size == 0) {return "[]";}
         String str = "[";
@@ -236,7 +238,8 @@ public class SuperArray implements Iterable<String> {
         c.add("Derk Tran");
         c.add("Drk Tran");
         c.add("DTran");
-        System.out.println(c);
+        //System.out.println(c);
+	for(String s : c) {System.out.println(s);}
         //System.out.println();
     }
 }

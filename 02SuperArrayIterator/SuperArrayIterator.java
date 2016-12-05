@@ -10,7 +10,7 @@ public class SuperArrayIterator implements Iterator<String> {
     }
 
     public boolean hasNext() {
-	return sa.getSize() > current + 1;
+	return sa.getSize() > current;
     }
 
     public String next() throws NoSuchElementException {

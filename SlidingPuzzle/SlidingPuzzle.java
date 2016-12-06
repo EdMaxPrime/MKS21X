@@ -34,6 +34,20 @@ public class SlidingPuzzle {
 	return str;
     }
 
+    public boolean isDone1() {
+	int last = 0;
+	for(int row = 0; row < side; row++) {
+	    for(int col = 0; col < side; col++) {
+		if(values[row][col] > last) {
+		    last++;
+		} else if(values[row][col] != 0) {
+		    return false;
+		}
+	    }
+	}
+	return true;
+    }
+
     public void solve(int hole) {
 	int last = 0;
 	for(int row = 0; row < side; row++) {
@@ -58,9 +72,12 @@ public class SlidingPuzzle {
     public static void main(String[] args) {
 	SlidingPuzzle s = new SlidingPuzzle(4);
 	System.out.println(s);
+	System.out.println(s.isDone1());
 	s.solve(0);
 	System.out.println(s);
+	System.out.println(s.isDone1());
 	s.solve(12);
 	System.out.println(s);
+	System.out.println(s.isDone1());
     }
 }

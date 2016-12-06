@@ -34,6 +34,16 @@ public class SlidingPuzzle {
 	return str;
     }
 
+    public void solve(int hole) {
+	int last = 0;
+	for(int row = 0; row < side; row++) {
+	    for(int col = 0; col < side; col++) {
+		if(row * 4 + col == hole) {values[row][col] = 0;}
+		else {last++; values[row][col] = last;}
+	    }
+	}
+    }
+
     public static String pad(String orig, String padding, int width) {
 	while(orig.length() < Math.abs(width)) {
 	    if(width > 0) {
@@ -48,6 +58,9 @@ public class SlidingPuzzle {
     public static void main(String[] args) {
 	SlidingPuzzle s = new SlidingPuzzle(4);
 	System.out.println(s);
-	//System.out.println();
+	s.solve(0);
+	System.out.println(s);
+	s.solve(12);
+	System.out.println(s);
     }
 }

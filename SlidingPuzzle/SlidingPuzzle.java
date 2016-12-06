@@ -7,6 +7,7 @@ public class SlidingPuzzle {
     public SlidingPuzzle(int sidelength) {
 	side = sidelength;
 	values = new int[side][side];
+	initialize();
     }
 
     public void initialize() {

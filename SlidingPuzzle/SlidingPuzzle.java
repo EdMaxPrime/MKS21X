@@ -27,11 +27,22 @@ public class SlidingPuzzle {
 	String str = "";
 	for(int row = 0; row < side; row++) {
 	    for(int col = 0; col < side; col++) {
-		str += (values[row][col] + " ");
+		str += pad("" + values[row][col], " ", -3);
 	    }
 	    str += "\n";
 	}
 	return str;
+    }
+
+    public static String pad(String orig, String padding, int width) {
+	while(orig.length() < Math.abs(width)) {
+	    if(width > 0) {
+		orig += padding;
+	    } else {
+		orig = padding + orig;
+	    }
+	}
+	return orig;
     }
 
     public static void main(String[] args) {

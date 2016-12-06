@@ -70,6 +70,18 @@ public class SlidingPuzzle {
 	return true;
     }
 
+    public boolean isDone3() {
+	for(int i = 1; i < side * side - 1; i++) {
+	    int prev = values[(i - 1) / 4][(i + 1) % 4],
+		self = values[i / 4][i % 4],
+		next = values[(i + 1) / 4][(i + 1) % 4];
+	    if(prev != 0 && self != 0 && next != 0 && prev > next) {
+		return false;
+	    }
+	}
+	return true;
+    }
+
     public void solve(int hole) {
 	int last = 0;
 	for(int row = 0; row < side; row++) {
@@ -111,5 +123,15 @@ public class SlidingPuzzle {
 	System.out.println("Hole@15: " + s.isDone2());
 	s.solve(12);
 	System.out.println("Hole@12: " + s.isDone2());
+	System.out.println("==3rd Version==");
+	s = new SlidingPuzzle(4);
+	System.out.println(s);
+	System.out.println(s.isDone3());
+	s.solve(0);
+	System.out.println("Hole@0: " + s.isDone3());
+	s.solve(15);
+	System.out.println("Hole@15: " + s.isDone3());
+	s.solve(10);
+	System.out.println("Hole@10: " + s.isDone3());
     }
 }

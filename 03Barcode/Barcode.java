@@ -27,7 +27,13 @@ public class Barcode {
 
     public int compareTo(Barcode other) {return 0;}
 
-    public String toString() {return "";}
+    public String toString() {
+	String encoded = "";
+	for(int i = 0; i < _zip.length(); i++) {
+	    encoded += encode(Integer.parseInt(_zip.substring(i, i+1)));
+	}
+	return _zip + _checkDigit + " |" + encoded + "|";
+    }
 
     /*HELPER FUNCTIONS*/
 
@@ -69,5 +75,6 @@ public class Barcode {
 	catch(Exception e) {System.out.println("Passed too short test");}
 	a = new Barcode("06780");
 	System.out.println(a.getCheckDigit());
+	System.out.println(a);
     }
 }

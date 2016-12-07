@@ -25,4 +25,15 @@ public class Barcode {
     public int compareTo(Barcode other) {return 0;}
 
     public String toString() {return "";}
+
+    public static void main(String[] args) {
+	Barcode a;
+	try {a = new Barcode("");}
+	catch(Exception e) {System.out.println("Passed empty string test");}
+	try {a = new Barcode("abcde");}
+	catch(Exception e) {System.out.println("Passed NaN test");}
+	try {a = new Barcode("1");}
+	catch(Exception e) {System.out.println("Passed too short test");}
+	
+    }
 }

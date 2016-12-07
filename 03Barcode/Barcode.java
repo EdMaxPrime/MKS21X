@@ -17,7 +17,10 @@ public class Barcode {
 
     public Barcode clone() {return null;}
 
-    private int checkSum() {return 0;}
+    private int checkSum() {
+	int sum = Integer.parseInt(_zip);
+	return sum % 10;
+    }
 
     public int compareTo(Barcode other) {return 0;}
 

@@ -18,13 +18,18 @@ public class Barcode {
     public Barcode clone() {return null;}
 
     private int checkSum() {
-	int sum = Integer.parseInt(_zip);
+	int sum = 0;
+	for(int i = 0; i < _zip.length(); i++) {
+	    sum += Integer.parseInt(_zip.substring(i, i+1));
+	}
 	return sum % 10;
     }
 
     public int compareTo(Barcode other) {return 0;}
 
     public String toString() {return "";}
+
+    public int getCheckDigit() {return _checkDigit;}
 
     public static void main(String[] args) {
 	Barcode a;
@@ -34,6 +39,7 @@ public class Barcode {
 	catch(Exception e) {System.out.println("Passed NaN test");}
 	try {a = new Barcode("1");}
 	catch(Exception e) {System.out.println("Passed too short test");}
-	
+	a = new Barcode("06780");
+	System.out.println(a.getCheckDigit());
     }
 }

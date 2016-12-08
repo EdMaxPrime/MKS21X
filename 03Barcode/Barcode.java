@@ -1,14 +1,16 @@
+import java.util.Random;
+
 public class Barcode implements Comparable<Barcode> {
     private String _zip;
     private int _checkDigit;
 
     public Barcode(String zip) {
 	if(zip.length() != 5) {
-	    throw new IllegalArgumentException("ZIP code must have a length of 5");
+	    throw new IllegalArgumentException("ZIP code must have a length of 5, recieved " + zip);
 	}
 	for(int i = 0; i < 5; i++) {
 	    if(!Character.isDigit(zip.charAt(i))) {
-		throw new IllegalArgumentException("ZIP code must be a 5 digit whole number");
+		throw new IllegalArgumentException("ZIP code must be a 5 digit whole number, recieved " + zip);
 	    }
 	}
 	_zip = zip;
@@ -104,5 +106,16 @@ public class Barcode implements Comparable<Barcode> {
 	System.out.println("a __ a  ==>  " + a.compareTo(a));
 	System.out.println("a __ ~a ==>  " + a.compareTo(a.clone()));
 	System.out.println("b __ a  ==>  " + b.compareTo(a));
+	Random rng = new Random();
+	for(int test = 0; test < 5; test++) {
+	    System.out.println(pad("", "~", 5) + "TEST " + test + pad("", "~", 5));
+	    Barcode c = new Barcode(pad("" + rng.nextInt(100000), "0", -5)),
+		d = new Barcode(pad("" + rng.nextInt(100000), "0", -5));
+	    System.out.println("C: " + c);
+	    System.out.println("D: " + d);
+	    System.out.println("C __ D  ==>  " + c.compareTo(d));
+	    System.out.println("C __ ~C ==>  " + c.compareTo(c.clone()));
+	    System.out.println("D __ C  ==>  " + d.compareTo(c));
+	}
     }
 }

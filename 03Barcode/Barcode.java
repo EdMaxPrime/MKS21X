@@ -15,7 +15,9 @@ public class Barcode implements Comparable<Barcode> {
 	_checkDigit = checkSum();
     }
 
-    public Barcode clone() {return null;}
+    public Barcode clone() {
+	return new Barcode(_zip);
+    }
 
     private int checkSum() {
 	int sum = 0;
@@ -84,6 +86,7 @@ public class Barcode implements Comparable<Barcode> {
 	System.out.println(b);
 	System.out.println("a __ b  ==>  " + a.compareTo(b));
 	System.out.println("a __ a  ==>  " + a.compareTo(a));
+	System.out.println("a __ ~a ==>  " + a.compareTo(a.clone()));
 	System.out.println("b __ a  ==>  " + b.compareTo(a));
     }
 }

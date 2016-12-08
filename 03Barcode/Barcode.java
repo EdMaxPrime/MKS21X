@@ -1,4 +1,4 @@
-public class Barcode {
+public class Barcode implements Comparable<Barcode> {
     private String _zip;
     private int _checkDigit;
 
@@ -25,7 +25,11 @@ public class Barcode {
 	return sum % 10;
     }
 
-    public int compareTo(Barcode other) {return 0;}
+    public int compareTo(Barcode other) {
+	int me = Integer.parseInt(_zip) * 10 + _checkDigit;
+	int compare = Integer.parseInt(other._zip) * 10 + other._checkDigit;
+	return me - compare;
+    }
 
     public String toString() {
 	String encoded = "";
@@ -76,5 +80,10 @@ public class Barcode {
 	a = new Barcode("06780");
 	System.out.println(a.getCheckDigit());
 	System.out.println(a);
+	Barcode b = new Barcode("11234");
+	System.out.println(b);
+	System.out.println("a __ b  ==>  " + a.compareTo(b));
+	System.out.println("a __ a  ==>  " + a.compareTo(a));
+	System.out.println("b __ a  ==>  " + b.compareTo(a));
     }
 }

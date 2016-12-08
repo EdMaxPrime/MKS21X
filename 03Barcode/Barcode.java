@@ -70,6 +70,22 @@ public class Barcode implements Comparable<Barcode> {
     public int getCheckDigit() {return _checkDigit;}
 
     private int getCompareValue() {return Integer.parseInt(_zip) * 10 + _checkDigit;}
+    
+    /**
+       Pads the first string using the second string until its length is >= width.
+       If width is negative, adds to the beginning. If positive, adds to the end.
+       @returns the padded string, atleast abs(width) characters long
+     */
+    public static String pad(String orig, String padding, int width) {
+        while(orig.length() < Math.abs(width)) {
+            if(width > 0) {
+                orig += padding;
+            } else {
+                orig = padding + orig;
+            }
+	}
+        return orig;
+    }
 
     public static void main(String[] args) {
 	Barcode a;

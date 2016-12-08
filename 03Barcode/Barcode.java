@@ -26,9 +26,7 @@ public class Barcode implements Comparable<Barcode> {
     }
 
     public int compareTo(Barcode other) {
-	int me = Integer.parseInt(_zip) * 10 + _checkDigit;
-	int compare = Integer.parseInt(other._zip) * 10 + other._checkDigit;
-	return me - compare;
+	return getCompareValue() - other.getCompareValue();
     }
 
     public String toString() {
@@ -68,6 +66,8 @@ public class Barcode implements Comparable<Barcode> {
     }
 
     public int getCheckDigit() {return _checkDigit;}
+
+    private int getCompareValue() {return Integer.parseInt(_zip) * 10 + _checkDigit;}
 
     public static void main(String[] args) {
 	Barcode a;

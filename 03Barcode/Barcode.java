@@ -41,11 +41,26 @@ public class Barcode implements Comparable<Barcode> {
 	return _zip + _checkDigit + " |" + encoded + "|";
     }
 
-    
+    public static String toCode(String zip) {
+	String code = "";
+	if(zip.length() != 5) {
+	    throw new IllegalArgumentException("Expected a ZIP code with 5 digits, instead found " + zip);
+	}
+	char[] chars = zip.toCharArray();
+	for(char c : chars) {
+	    if(Character.isDigit(c)) {
+		code += encode(Integer.valueOf(""+c));
+	    }
+	    else {
+		throw new IllegalArgumentException("Expected a ZIP code with 5 digits, but found non-digit '"+c+"' in " + zip);
+	    }
+	}
+	return "|" + code + "|";
+    }
 
     /*HELPER FUNCTIONS*/
 
-    private String encode(int digit) {
+    private static String encode(int digit) {
 	switch(digit) {
 	case 1:
 	    return ":::||";
@@ -76,7 +91,7 @@ public class Barcode implements Comparable<Barcode> {
        @param postal the 5 character postal code representation of the digit
        @return A digit from 0-9 if valid, -1 if invalid
      */
-    private int decode(String postal) {
+    private static int decode(String postal) {
 	int digit = 0;
 	while(digit < 10) {
 	    if(postal.equals(encode(digit))) {return digit;}
@@ -122,6 +137,7 @@ public class Barcode implements Comparable<Barcode> {
 	System.out.println("a __ a  ==>  " + a.compareTo(a));
 	System.out.println("a __ ~a ==>  " + a.compareTo(a.clone()));
 	System.out.println("b __ a  ==>  " + b.compareTo(a));
+	System.out.println("11234 to code ==> " + Barcode.toCode("11234"));
 	Random rng = new Random();
 	for(int test = 0; test < 5; test++) {
 	    System.out.println(pad("", "~", 5) + "TEST " + test + pad("", "~", 5));

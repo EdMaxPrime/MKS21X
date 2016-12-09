@@ -41,6 +41,8 @@ public class Barcode implements Comparable<Barcode> {
 	return _zip + _checkDigit + " |" + encoded + "|";
     }
 
+    
+
     /*HELPER FUNCTIONS*/
 
     private String encode(int digit) {
@@ -67,6 +69,20 @@ public class Barcode implements Comparable<Barcode> {
 	    return "||:::";
 	}
 	return "";
+    }
+
+    /**
+       The inverse of encode(). Converts a postal code into its digit
+       @param postal the 5 character postal code representation of the digit
+       @return A digit from 0-9 if valid, -1 if invalid
+     */
+    private int decode(String postal) {
+	int digit = 0;
+	while(digit < 10) {
+	    if(postal.equals(encode(digit))) {return digit;}
+	    digit++;
+	}
+	return -1;
     }
 
     public int getCheckDigit() {return _checkDigit;}

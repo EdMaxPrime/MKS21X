@@ -58,6 +58,13 @@ public class Barcode implements Comparable<Barcode> {
 	return "|" + code + "|";
     }
 
+    public static String toZip(String code) {
+	if(code.length() != 32) {
+	    throw new IllegalArgumentException("Expected postal code of length 32, instead got \"" + code + "\" of length " + code.length());
+	}
+	return "";
+    }
+
     /*HELPER FUNCTIONS*/
 
     private static String encode(int digit) {

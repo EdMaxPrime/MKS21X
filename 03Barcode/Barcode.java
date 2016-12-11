@@ -76,6 +76,7 @@ public class Barcode implements Comparable<Barcode> {
 		throw new IllegalArgumentException("Invalid encoded integer \"" + unpacked.substring(0, 5) + "\" in " + code);
 	    }
 	    sixdigits += d;
+	    unpacked = unpacked.substring(5);
 	}
 	if(sumDigits(sixdigits.substring(0, 5)) % 10 != Integer.parseInt(sixdigits.substring(5, 6))) {
 	    throw new IllegalArgumentException("Mismatched check digit in postal code: " + code);

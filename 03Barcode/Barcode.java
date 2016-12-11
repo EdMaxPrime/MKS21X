@@ -70,9 +70,13 @@ public class Barcode implements Comparable<Barcode> {
 	}
 	String unpacked = code.substring(1, 31), sixdigits = "";
 	while(unpacked.length() > 0) {
-	    
+	    int d = decode(unpacked.substring(0, 5));
+	    if(d == -1) {
+		throw new IllegalArgumentException("Invalid encoded integer \"" + unpacked.substring(0, 5) + "\" in " + code);
+	    }
+	    sixdigits += d;
 	}
-	return "";
+        return sixdigits.substring(0, 5);
     }
 
     /*HELPER FUNCTIONS*/

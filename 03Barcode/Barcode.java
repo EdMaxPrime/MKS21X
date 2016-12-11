@@ -4,6 +4,9 @@ public class Barcode implements Comparable<Barcode> {
     private String _zip;
     private int _checkDigit;
 
+    /**
+       @param zip The 5 digit zipcode
+     */
     public Barcode(String zip) {
 	if(zip.length() != 5) {
 	    throw new IllegalArgumentException("ZIP code must have a length of 5, recieved " + zip);
@@ -16,11 +19,18 @@ public class Barcode implements Comparable<Barcode> {
 	_zip = zip;
 	_checkDigit = checkSum();
     }
-
+    
+    /**
+       Clones self
+       @return a Barcode object with the same zipcode
+    */
     public Barcode clone() {
 	return new Barcode(_zip);
     }
 
+    /** 
+	Generates checksum for the 5 digit zipcode
+     */
     private int checkSum() {
 	int sum = 0;
 	for(int i = 0; i < _zip.length(); i++) {
@@ -29,15 +39,27 @@ public class Barcode implements Comparable<Barcode> {
 	return sum % 10;
     }
 
+    /** 
+	Compares Barcodes using their numerical order (not the symbols)
+	@return 0 when the same value, positive when this is greater than other, negative when this is less than other
+     */
     public int compareTo(Barcode other) {
 	return getCompareValue() - other.getCompareValue();
     }
 
+    /** 
+	@return A String in the format: "&lt;zip code with checksum as last digit&gt; &lt;postal code&gt;"
+     */
     public String toString() {
 	String encoded = Barcode.toCode(_zip);
 	return _zip + _checkDigit + " |" + encoded + "|";
     }
 
+    /**
+       Converts a 5 digit zipcode to barcode
+       @param zip The 5 digit zip code
+       @return    The barcode formatted as "|&lt;encoded zip&gt;&lt;encodec check digit&gt;|"
+     */
     public static String toCode(String zip) {
 	String code = "";
 	if(zip.length() != 5) {
@@ -56,6 +78,11 @@ public class Barcode implements Comparable<Barcode> {
 	return "|" + code + "|";
     }
 
+    /**
+       Converts a Barcode to a 5 digit zip
+       @param code The 32char barcode to convert into a zip code
+       @return     The 5 digit zip code
+     */
     public static String toZip(String code) {
 	if(code.length() != 32) {
 	    throw new IllegalArgumentException("Expected postal code of length 32, instead got \"" + code + "\" of length " + code.length());
@@ -83,6 +110,11 @@ public class Barcode implements Comparable<Barcode> {
 
     /*HELPER FUNCTIONS*/
 
+    /**
+       Represents the digit as it would be in a postal barcode
+       @param digit a positive integer 0-9
+       @return      A 5char string representing the digit
+     */
     private static String encode(int digit) {
 	switch(digit) {
 	case 1:
@@ -132,10 +164,23 @@ public class Barcode implements Comparable<Barcode> {
 	return hits;
     }
 
+    /**
+       Getter for the checkDigit
+       @return the check digit
+     */
     public int getCheckDigit() {return _checkDigit;}
 
+    /**
+       Used internally in the compareTo method
+       @return the numerical value of this barcode to be used in comparisons
+     */
     private int getCompareValue() {return Integer.parseInt(_zip) * 10 + _checkDigit;}
 
+    /**
+       Sums the digits
+       @param num positive integer
+       @return    the sum of the digits
+     */
     public static int sumDigits(int num) {
 	int sum = 0;
 	while(num > 0) {
@@ -145,12 +190,19 @@ public class Barcode implements Comparable<Barcode> {
 	return sum;
     }
 
+    /** 
+       Overloaded version of sumDigits
+       @param num A valid positive integer as a string
+       @return    The same thing that sumDigits would have if num was an integer
+     */
     public static int sumDigits(String num) {return sumDigits(Integer.parseInt(num));}
     
     /**
        Pads the first string using the second string until its length is >= width.
        If width is negative, adds to the beginning. If positive, adds to the end.
-       @returns the padded string, atleast abs(width) characters long
+       @param orig    the string to pad
+       @param padding the string to add when padding
+       @returns       the padded string, atleast abs(width) characters long
      */
     public static String pad(String orig, String padding, int width) {
         while(orig.length() < Math.abs(width)) {

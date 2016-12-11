@@ -76,6 +76,9 @@ public class Barcode implements Comparable<Barcode> {
 	    }
 	    sixdigits += d;
 	}
+	if(sumDigits(sixdigits.substring(0, 5)) % 10 != Integer.parseInt(sixdigits.substring(5, 6))) {
+	    throw new IllegalArgumentException("Mismatched check digit in postal code: " + code);
+	}
         return sixdigits.substring(0, 5);
     }
 
@@ -133,6 +136,17 @@ public class Barcode implements Comparable<Barcode> {
     public int getCheckDigit() {return _checkDigit;}
 
     private int getCompareValue() {return Integer.parseInt(_zip) * 10 + _checkDigit;}
+
+    public static int sumDigits(int num) {
+	int sum = 0;
+	while(num > 0) {
+	    sum += num % 10;
+	    num /= 10;
+	}
+	return sum;
+    }
+
+    public static int sumDigits(String num) {return sumDigits(Integer.parseInt(num));}
     
     /**
        Pads the first string using the second string until its length is >= width.

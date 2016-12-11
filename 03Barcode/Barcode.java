@@ -55,6 +55,7 @@ public class Barcode implements Comparable<Barcode> {
 		throw new IllegalArgumentException("Expected a ZIP code with 5 digits, but found non-digit '"+c+"' in " + zip);
 	    }
 	}
+	code += encode(sumDigits(zip) % 10);
 	return "|" + code + "|";
     }
 

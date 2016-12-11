@@ -34,10 +34,7 @@ public class Barcode implements Comparable<Barcode> {
     }
 
     public String toString() {
-	String encoded = "";
-	for(int i = 0; i < _zip.length(); i++) {
-	    encoded += encode(Integer.parseInt(_zip.substring(i, i+1)));
-	}
+	String encoded = Barcode.toCode(_zip);
 	return _zip + _checkDigit + " |" + encoded + "|";
     }
 

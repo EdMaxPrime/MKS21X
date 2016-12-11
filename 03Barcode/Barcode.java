@@ -192,6 +192,10 @@ public class Barcode implements Comparable<Barcode> {
 	    System.out.println("C __ D  ==>  " + c.compareTo(d));
 	    System.out.println("C __ ~C ==>  " + c.compareTo(c.clone()));
 	    System.out.println("D __ C  ==>  " + d.compareTo(c));
+	    String e_zip = pad("" + rng.nextInt(100000), "0", -5);
+	    System.out.println("E: " + e_zip);
+	    System.out.println("toCode(" + e_zip + ")  ==>  " + Barcode.toCode(e_zip));
+	    System.out.println("toZip()  ==>  " + Barcode.toZip(Barcode.toCode(e_zip)));
 	}
     }
 }

@@ -65,9 +65,12 @@ public class Barcode implements Comparable<Barcode> {
 	if(code.charAt(0) != '|' || code.charAt(31) != '|') {
 	    throw new IllegalArgumentException("Expected postal code with guard rails, instead got: " + code);
 	}
+	if(count(code, "|") + count(code, ":") != 32) {
+	    throw new IllegalArgumentException("Found non-barcode characters in: " + code);
+	}
 	String unpacked = code.substring(1, 31), sixdigits = "";
 	while(unpacked.length() > 0) {
-	    //
+	    
 	}
 	return "";
     }

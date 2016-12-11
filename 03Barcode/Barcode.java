@@ -114,6 +114,15 @@ public class Barcode implements Comparable<Barcode> {
 	return -1;
     }
 
+    public static int count(String body, String search) {
+	int hits = 0;
+	while(body.indexOf(search) != -1) {
+	    hits++;
+	    body = body.substring(body.indexOf(search) + search.length());
+	}
+	return hits;
+    }
+
     public int getCheckDigit() {return _checkDigit;}
 
     private int getCompareValue() {return Integer.parseInt(_zip) * 10 + _checkDigit;}

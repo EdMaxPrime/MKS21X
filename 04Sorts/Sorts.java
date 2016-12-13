@@ -13,9 +13,14 @@ public class Sorts {
 	while(index < data.length - 1) {
 	    //create range of array
 	    //find index of smallest
+	    int smallest = min(data, index);
 	    //store THIS in temp
+	    int temp = data[index];
 	    //swap THIS with the aforementioned index
+	    data[index] = data[smallest];
+	    data[smallest] = temp;
 	    //increase counter
+	    index++;
 	}
     }
 
@@ -51,5 +56,7 @@ public class Sorts {
 	System.out.println("a: " + arr2str(a));
 	System.out.println("Index of smallest: " + min(a));
 	System.out.println("Min2: " + min(a, 2));
+	selectionSort(a);
+	System.out.println("Sorted: " + arr2str(a));
     }
 }

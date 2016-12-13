@@ -1,3 +1,4 @@
+import java.util.Random;
 public class Sorts {
     public static String name() {
 	return "06.Zlotskiy.Max";
@@ -58,5 +59,15 @@ public class Sorts {
 	System.out.println("Min2: " + min(a, 2));
 	selectionSort(a);
 	System.out.println("Sorted: " + arr2str(a));
+	Random rng = new Random();
+	for(int i = 0; i < 5; i++) {
+	    int len = 3 + rng.nextInt(8);
+	    int[] bc = new int[len];
+	    while(len > 0) {bc[len-1] = rng.nextInt(50); len--;}
+	    System.out.println("===Test #" + i);
+	    System.out.println("Before: " + arr2str(bc));
+	    selectionSort(bc);
+	    System.out.println("After: " + arr2str(bc));
+	}
     }
 }

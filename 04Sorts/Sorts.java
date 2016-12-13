@@ -8,7 +8,16 @@ public class Sorts {
      *Upon completion, the elements of the array will be in increasing order.
      *@param data  the elements to be sorted.
      */
-    public static void selectionSort(int[] data) {}
+    public static void selectionSort(int[] data) {
+	int index = 0;
+	while(index < data.length - 1) {
+	    //create range of array
+	    //find index of smallest
+	    //store THIS in temp
+	    //swap THIS with the aforementioned index
+	    //increase counter
+	}
+    }
 
     /**
        Find smallest element index
@@ -34,7 +43,7 @@ public class Sorts {
     }
     
     public static void main(String[] args) {
-	int[] a = {5, 6, 7};
+	int[] a = {5, 6, 7, 4};
 	System.out.println("a: " + arr2str(a));
 	System.out.println("Index of smallest: " + min(a));
     }

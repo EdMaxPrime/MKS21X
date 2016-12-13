@@ -24,8 +24,12 @@ public class Sorts {
        @return the index of the smallest integer
      */
     private static int min(int[] array) {
-	int smallest = 0;
-	for(int i = 0; i < array.length; i++) {
+	return min(array, 0);
+    }
+
+    private static int min(int[] array, int start) {
+	int smallest = start;
+	for(int i = start; i < array.length; i++) {
 	    if(array[i] < array[smallest]) {
 		smallest = i;
 	    }
@@ -46,5 +50,6 @@ public class Sorts {
 	int[] a = {5, 6, 7, 4};
 	System.out.println("a: " + arr2str(a));
 	System.out.println("Index of smallest: " + min(a));
+	System.out.println("Min2: " + min(a, 2));
     }
 }

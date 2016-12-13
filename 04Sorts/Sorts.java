@@ -23,9 +23,19 @@ public class Sorts {
 	}
 	return smallest;
     }
+
+    private static String arr2str(int[] array) {
+	String str = "";
+	for(int i : array) {
+	    str += (i + ", ");
+	}
+	str = str.substring(0, str.length()-2);
+	return "[" + str + "]";
+    }
     
     public static void main(String[] args) {
 	int[] a = {5, 6, 7};
+	System.out.println("a: " + arr2str(a));
 	System.out.println("Index of smallest: " + min(a));
     }
 }

@@ -9,4 +9,8 @@ public class Sorts {
      *@param data  the elements to be sorted.
      */
     public static void selectionSort(int[] data) {}
+
+    public static void main(String[] args) {
+	int[] a = {5, 6, 7};
+    }
 }

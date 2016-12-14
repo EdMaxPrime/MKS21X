@@ -43,12 +43,23 @@ public class Sorts {
 	return smallest;
     }
 
-    public static insertionSort(int[] array) {
+    public static void insertionSort(int[] array) {
 	//index of THE WALL = 0
 	//while THE_WALL < len-1
 	//    take WALL+1
 	//    if its < wall {loop[0, wall): find insert index, insert}
 	//    wall++
+    }
+
+    private static void shift(int[] array, int start, int end) {
+	int temp = array[start];
+	for(int i = start+1; i < end; i++) {
+	    if(i == start + 1) {
+		array[i] = array[i-1];
+	    } else {
+		array[i] = temp;
+	    }
+	}
     }
 
     private static String arr2str(int[] array) {
@@ -77,5 +88,8 @@ public class Sorts {
 	    selectionSort(bc);
 	    System.out.println("After: " + arr2str(bc));
 	}
+	int[] d = {4, 5, 6, 7, 7};
+	shift(d, 0, 5);
+	System.out.println(arr2str(d));
     }
 }

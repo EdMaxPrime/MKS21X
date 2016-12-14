@@ -43,6 +43,14 @@ public class Sorts {
 	return smallest;
     }
 
+    public static insertionSort(int[] array) {
+	//index of THE WALL = 0
+	//while THE_WALL < len-1
+	//    take WALL+1
+	//    if its < wall {loop[0, wall): find insert index, insert}
+	//    wall++
+    }
+
     private static String arr2str(int[] array) {
 	String str = "";
 	for(int i : array) {

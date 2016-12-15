@@ -45,10 +45,23 @@ public class Sorts {
 
     public static void insertionSort(int[] array) {
 	//index of THE WALL = 0
+	int sorted = 0;
 	//while THE_WALL < len-1
+	while(sorted < array.length-1) {
 	//    take WALL+1
 	//    if its < wall {loop[0, wall): find insert index, insert}
+	    if(array[sorted+1] < array[sorted]) {
+		int insertIndex = 0;
+		while(array[sorted+1] > array[insertIndex]) {
+		    insertIndex++;
+		}
+		int temp = array[sorted+1];
+		shift(array, insertIndex, sorted+1);
+		array[insertIndex] = temp;
+	    }
 	//    wall++
+	    sorted++;
+	}
     }
 
     private static void shift(int[] array, int start, int end) {
@@ -87,5 +100,8 @@ public class Sorts {
 	int[] d = {4, 5, 6, 7, 7};
 	shift(d, 0, 5);
 	System.out.println(arr2str(d));
+	int[] e = {5};
+	insertionSort(e);
+	System.out.println(arr2str(e));
     }
 }

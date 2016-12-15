@@ -56,7 +56,7 @@ public class Sorts {
 		    insertIndex++;
 		}
 		int temp = array[sorted+1];
-		shift(array, insertIndex, sorted+1);
+		shift(array, insertIndex, sorted+2);
 		array[insertIndex] = temp;
 	    }
 	//    wall++
@@ -100,7 +100,7 @@ public class Sorts {
 	int[] d = {4, 5, 6, 7, 7};
 	shift(d, 0, 5);
 	System.out.println(arr2str(d));
-	int[] e = {5};
+	int[] e = {50, 10, 23, 45, 59, 27, 28, 38, 35};
 	insertionSort(e);
 	System.out.println(arr2str(e));
     }

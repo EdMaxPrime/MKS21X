@@ -88,7 +88,7 @@ public class Sorts {
 	selectionSort(a);
 	System.out.println("Sorted: " + arr2str(a));
 	Random rng = new Random();
-	for(int i = 0; i < 5; i++) {
+	for(int i = 0; i < 5; i++) { //selection sort
 	    int len = 3 + rng.nextInt(8);
 	    int[] bc = new int[len];
 	    while(len > 0) {bc[len-1] = rng.nextInt(50); len--;}
@@ -97,11 +97,14 @@ public class Sorts {
 	    selectionSort(bc);
 	    System.out.println("After: " + arr2str(bc));
 	}
-	int[] d = {4, 5, 6, 7, 7};
-	shift(d, 0, 5);
-	System.out.println(arr2str(d));
-	int[] e = {50, 10, 23, 45, 59, 27, 28, 38, 35, 35, 27};
-	insertionSort(e);
-	System.out.println(arr2str(e));
+	for(int i = 0; i < 5; i++) { //insertion sort
+	    int len = 3 + rng.nextInt(13);
+	    int[] d = new int[len];
+	    while(len > 0) {d[len-1] = rng.nextInt(100) - 50; len--;}
+	    System.out.println("===Test #" + i);
+	    System.out.println("Before: " + arr2str(d));
+	    selectionSort(d);
+	    System.out.println("After: " + arr2str(d));
+	}
     }
 }

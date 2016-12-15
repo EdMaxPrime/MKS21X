@@ -71,6 +71,17 @@ public class Sorts {
 	}
     }
 
+    public static void bubbleSort(int[] array) {
+	//end = len
+	//swapped = true
+	//while end > 0 and swapped
+	//    swapped = false
+	//    loop[0, end-1)
+	//        if this > next then
+	//            swap()
+	//            swapped = true
+    }
+
     private static String arr2str(int[] array) {
 	String str = "";
 	for(int i : array) {

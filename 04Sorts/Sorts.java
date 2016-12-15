@@ -73,13 +73,28 @@ public class Sorts {
 
     public static void bubbleSort(int[] array) {
 	//end = len
+	int end = array.length;
 	//swapped = true
+	boolean swapped = true;
 	//while end > 0 and swapped
+	while(end > 0 && swapped) {
 	//    swapped = false
+	    swapped = false;
 	//    loop[0, end-1)
+	    for(int i = 0; i < end - 1; i++) {
 	//        if this > next then
+		if(array[i] > array[i + 1]) { 
 	//            swap()
+		    int temp = array[i];
+		    array[i] = array[i + 1];
+		    array[i + 1] = temp;
 	//            swapped = true
+		    swapped = true;
+		}
+	    }
+	    //update end
+	    end--;
+	}
     }
 
     private static String arr2str(int[] array) {
@@ -117,5 +132,8 @@ public class Sorts {
 	    selectionSort(d);
 	    System.out.println("After: " + arr2str(d));
 	}
+	int[] e = {4, 1, 2, 3, 8, -1, 5};
+	bubbleSort(e);
+	System.out.println(arr2str(e));
     }
 }

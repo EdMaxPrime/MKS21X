@@ -132,8 +132,14 @@ public class Sorts {
 	    selectionSort(d);
 	    System.out.println("After: " + arr2str(d));
 	}
-	int[] e = {4, 1, 2, 3, 8, -1, 5};
-	bubbleSort(e);
-	System.out.println(arr2str(e));
+	for(int i = 0; i < 5; i++) { //bubble sort
+	    int len = 3 + rng.nextInt(13);
+	    int[] d = new int[len];
+	    while(len > 0) {d[len-1] = rng.nextInt(100) - 50; len--;}
+	    System.out.println("===Test #" + i);
+	    System.out.println("Before: " + arr2str(d));
+	    bubbleSort(d);
+	    System.out.println("After: " + arr2str(d));
+	}
     }
 }

@@ -144,5 +144,13 @@ public class Sorts {
 	    bubbleSort(d);
 	    System.out.println("After: " + arr2str(d));
 	}
+	System.out.println("##### EMPTY LISTS #####");
+	int[] e = {};
+	bubbleSort(e);
+	System.out.println("Bubble: " + arr2str(e));
+	insertionSort(e);
+	System.out.println("Insertion: " + arr2str(e));
+	selectionSort(e);
+	System.out.println("Selection: " + arr2str(e));
     }
 }

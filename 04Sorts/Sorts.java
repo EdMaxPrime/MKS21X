@@ -114,6 +114,7 @@ public class Sorts {
 	selectionSort(a);
 	System.out.println("Sorted: " + arr2str(a));
 	Random rng = new Random();
+	System.out.println("##### SELECTION SORT #####");
 	for(int i = 0; i < 5; i++) { //selection sort
 	    int len = 3 + rng.nextInt(8);
 	    int[] bc = new int[len];
@@ -123,6 +124,7 @@ public class Sorts {
 	    selectionSort(bc);
 	    System.out.println("After: " + arr2str(bc));
 	}
+	System.out.println("##### INSERTION SORT #####");
 	for(int i = 0; i < 5; i++) { //insertion sort
 	    int len = 3 + rng.nextInt(13);
 	    int[] d = new int[len];
@@ -132,6 +134,7 @@ public class Sorts {
 	    selectionSort(d);
 	    System.out.println("After: " + arr2str(d));
 	}
+	System.out.println("##### BUBBLE SORT #####");
 	for(int i = 0; i < 5; i++) { //bubble sort
 	    int len = 3 + rng.nextInt(13);
 	    int[] d = new int[len];

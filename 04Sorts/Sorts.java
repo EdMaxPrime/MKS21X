@@ -107,6 +107,32 @@ public class Sorts {
 	str = str.substring(0, str.length()-2);
 	return "[" + str + "]";
     }
+
+    private static interface Sorter {
+	public void sort(int[] array);
+    }
+
+    private static void testSorter(Sorter s) {
+	Random rng = new Random();
+	int[] empty = {};
+	s.sort(empty);
+	System.out.println("Empty array: " + arr2str(empty));
+	for(int i = 0; i < 5; i++) {
+	    int len = 3 + rng.nextInt(13);
+	    int[] arr = new int[len];
+	    for(int j = 0; j < arr.length; j++) {arr[i] = -100 + rng.nextInt(200);}
+	    System.out.println("===Test #" + (i + 1));
+	    System.out.println("Before: " + arr2str(arr));
+	    s.sort(arr);
+	    System.out.println("After: " + arr2str(arr));
+	}
+	int[] yuuge = new int[5000];
+	for(int i = 0; i < yuuge.length; i++) {yuuge[i] = -1000 + rng.nextInt(2000);}
+	int[] copy = Arrays.copyOf(yuuge, yuuge.length);
+	long time = System.currentTimeMillis();
+	s.sort(copy);
+	System.out.println("Time("+copy.length+"): " + (System.currentTimeMillis()-time) + " ms");
+    }
     
     public static void main(String[] args) {
 	int[] a = {5, 6, 7, 4};

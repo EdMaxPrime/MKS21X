@@ -98,6 +98,7 @@ public class Sorts {
     }
 
     private static String arr2str(int[] array) {
+	if(array.length == 0) {return "[]";}
 	String str = "";
 	for(int i : array) {
 	    str += (i + ", ");

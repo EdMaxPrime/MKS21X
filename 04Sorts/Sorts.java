@@ -140,58 +140,13 @@ public class Sorts {
     }
     
     public static void main(String[] args) {
-	int[] a = {5, 6, 7, 4};
+	/*int[] a = {5, 6, 7, 4};
 	System.out.println("a: " + arr2str(a));
 	System.out.println("Index of smallest: " + min(a));
 	System.out.println("Min2: " + min(a, 2));
 	selectionSort(a);
-	System.out.println("Sorted: " + arr2str(a));
+	System.out.println("Sorted: " + arr2str(a));*/
 	Random rng = new Random();
-	System.out.println("##### SELECTION SORT #####");
-	for(int i = 0; i < 5; i++) { //selection sort
-	    int len = 3 + rng.nextInt(8);
-	    int[] bc = new int[len];
-	    while(len > 0) {bc[len-1] = rng.nextInt(50); len--;}
-	    System.out.println("===Test #" + i);
-	    System.out.println("Before: " + arr2str(bc));
-	    selectionSort(bc);
-	    System.out.println("After: " + arr2str(bc));
-	}
-	System.out.println("##### INSERTION SORT #####");
-	for(int i = 0; i < 5; i++) { //insertion sort
-	    int len = 3 + rng.nextInt(13);
-	    int[] d = new int[len];
-	    while(len > 0) {d[len-1] = rng.nextInt(100) - 50; len--;}
-	    System.out.println("===Test #" + i);
-	    System.out.println("Before: " + arr2str(d));
-	    selectionSort(d);
-	    System.out.println("After: " + arr2str(d));
-	}
-	System.out.println("##### BUBBLE SORT #####");
-	for(int i = 0; i < 5; i++) { //bubble sort
-	    int len = 3 + rng.nextInt(13);
-	    int[] d = new int[len];
-	    while(len > 0) {d[len-1] = rng.nextInt(100) - 50; len--;}
-	    System.out.println("===Test #" + i);
-	    System.out.println("Before: " + arr2str(d));
-	    bubbleSort(d);
-	    System.out.println("After: " + arr2str(d));
-	}
-	System.out.println("##### EMPTY LISTS #####");
-	int[] e = {};
-	bubbleSort(e);
-	System.out.println("Bubble: " + arr2str(e));
-	insertionSort(e);
-	System.out.println("Insertion: " + arr2str(e));
-	selectionSort(e);
-	System.out.println("Selection: " + arr2str(e));
-	System.out.println("##### TIMED #####");
-	int[] unsorted = new int[5000];
-	for(int i = 0; i < unsorted.length; i++) {unsorted[i] = -1000 + rng.nextInt(2000);}
-	int[] copy = Arrays.copyOf(unsorted, unsorted.length);
-	long time = System.currentTimeMillis();
-	selectionSort(copy);
-	System.out.println("Selection: " + (System.currentTimeMillis()-time) + " ms");
 	int seed = rng.nextInt();
 	System.out.println("##### SELECTION SORT #####");
 	testSorter(new Sorter() {

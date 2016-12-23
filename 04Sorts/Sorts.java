@@ -192,11 +192,24 @@ public class Sorts {
 	long time = System.currentTimeMillis();
 	selectionSort(copy);
 	System.out.println("Selection: " + (System.currentTimeMillis()-time) + " ms");
+	int seed = rng.nextInt();
 	System.out.println("##### SELECTION SORT #####");
 	testSorter(new Sorter() {
 		public void sort(int[] array) {
 		    selectionSort(array);
 		}
-	    }, 100);
+	    }, seed);
+	System.out.println("##### INSERTION SORT #####");
+	testSorter(new Sorter() {
+		public void sort(int[] array) {
+		    insertionSort(array);
+		}
+	    }, seed);
+	System.out.println("##### BUBBLE SORT #####");
+	testSorter(new Sorter() {
+		public void sort(int[] array) {
+		    bubbleSort(array);
+		}
+	    }, seed);
     }
 }

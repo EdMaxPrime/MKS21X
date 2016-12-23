@@ -112,26 +112,31 @@ public class Sorts {
 	public void sort(int[] array);
     }
 
-    private static void testSorter(Sorter s) {
-	Random rng = new Random();
+    private static void testSorter(Sorter s, int seed) {
+	Random rng = new Random(seed);
 	int[] empty = {};
 	s.sort(empty);
 	System.out.println("Empty array: " + arr2str(empty));
 	for(int i = 0; i < 5; i++) {
 	    int len = 3 + rng.nextInt(13);
-	    int[] arr = new int[len];
-	    for(int j = 0; j < arr.length; j++) {arr[i] = -100 + rng.nextInt(200);}
+	    int[] unsorted = new int[len];
+	    for(int j = 0; j < unsorted.length; j++) {unsorted[j] = -100 + rng.nextInt(200);}
 	    System.out.println("===Test #" + (i + 1));
-	    System.out.println("Before: " + arr2str(arr));
-	    s.sort(arr);
-	    System.out.println("After: " + arr2str(arr));
+	    System.out.println("Before: " + arr2str(unsorted));
+	    s.sort(unsorted);
+	    System.out.println("After: " + arr2str(unsorted));
 	}
-	int[] yuuge = new int[5000];
-	for(int i = 0; i < yuuge.length; i++) {yuuge[i] = -1000 + rng.nextInt(2000);}
-	int[] copy = Arrays.copyOf(yuuge, yuuge.length);
-	long time = System.currentTimeMillis();
-	s.sort(copy);
-	System.out.println("Time("+copy.length+"): " + (System.currentTimeMillis()-time) + " ms");
+	int[] times = new int[10];
+	int[] yuuge = new int[1];
+	for(int t = 0; t < times.length; t++) {
+	    yuuge = new int[5000];
+	    for(int j = 0; j < yuuge.length; j++) {yuuge[j] = -1000 + rng.nextInt(2000);}
+	    long time = System.currentTimeMillis();
+	    s.sort(yuuge);
+	    times[t] = (int)(System.currentTimeMillis() - time);
+	}
+	s.sort(times);
+	System.out.println("Times("+yuuge.length+"): " + arr2str(times) + " ms");
     }
     
     public static void main(String[] args) {
@@ -187,5 +192,11 @@ public class Sorts {
 	long time = System.currentTimeMillis();
 	selectionSort(copy);
 	System.out.println("Selection: " + (System.currentTimeMillis()-time) + " ms");
+	System.out.println("##### SELECTION SORT #####");
+	testSorter(new Sorter() {
+		public void sort(int[] array) {
+		    selectionSort(array);
+		}
+	    }, 100);
     }
 }

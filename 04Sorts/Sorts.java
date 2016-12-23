@@ -34,6 +34,11 @@ public class Sorts {
 	return min(array, 0);
     }
 
+    /**
+       More generalized version of min
+       @param start the index to start looking, 0 to length-1
+       @return      the index of the smallest integer
+     */
     private static int min(int[] array, int start) {
 	int smallest = start;
 	for(int i = start; i < array.length; i++) {
@@ -65,6 +70,13 @@ public class Sorts {
 	}
     }
 
+    /**
+       Shifts every element in the array from [start, end) over
+       by one slot.
+       @param array integer array
+       @param start index from 0 to length-1
+       @param end   index from length to 0
+     */
     private static void shift(int[] array, int start, int end) {
 	int temp = array[start];
 	for(int i = end-1; i > start; i--) {
@@ -98,6 +110,11 @@ public class Sorts {
 	}
     }
 
+    /**
+       Converts an array of integers into a formatted string
+       [<i>i0, i1, i2, ... i(length - 1)</i>]
+       @param array the array of integers
+     */
     private static String arr2str(int[] array) {
 	if(array.length == 0) {return "[]";}
 	String str = "";
@@ -108,10 +125,22 @@ public class Sorts {
 	return "[" + str + "]";
     }
 
+    /**
+       Used for "lambda expressions" for testSorter
+     */
     private static interface Sorter {
 	public void sort(int[] array);
     }
 
+    /**
+       Expects an anonymous class that implements Sorter and a seed.
+       The seed is used for consistency across multiple test calls.
+       For example, using the same arrays to test multiple Sorters.
+       Includes a test for empty array, arrays length 3-15, and 10
+       timed tests for arrays of length 5000.
+       @param s    Something that implements the Sorter interface.
+       @param seed Used to initialize random number generator
+     */
     private static void testSorter(Sorter s, int seed) {
 	Random rng = new Random(seed);
 	int[] empty = {};

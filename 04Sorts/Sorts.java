@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 public class Sorts {
     public static String name() {
 	return "06.Zlotskiy.Max";
@@ -153,5 +154,12 @@ public class Sorts {
 	System.out.println("Insertion: " + arr2str(e));
 	selectionSort(e);
 	System.out.println("Selection: " + arr2str(e));
+	System.out.println("##### TIMED #####");
+	int[] unsorted = new int[5000];
+	for(int i = 0; i < unsorted.length; i++) {unsorted[i] = -1000 + rng.nextInt(2000);}
+	int[] copy = Arrays.copyOf(unsorted, unsorted.length);
+	long time = System.currentTimeMillis();
+	selectionSort(copy);
+	System.out.println("Selection: " + (System.currentTimeMillis()-time) + " ms");
     }
 }
